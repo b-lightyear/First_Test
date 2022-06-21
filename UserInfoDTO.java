@@ -8,6 +8,12 @@ public class UserInfoDTO {
 	private String last_name   ;
 	private String create_ymd  ;
 	private String update_ymd  ;
+	
+
+	
+	public UserInfoDTO() {
+		super();
+	}
 	public UserInfoDTO(int student_no, String user_id, String user_pw, String first_name, String last_name,
 			String create_ymd, String update_ymd) {
 		this.student_no = student_no;
