@@ -70,6 +70,24 @@ public class StudentController extends HttpServlet {
 			StudentDTO dto = dao.getStudentInfo(req.getParameter("student_no"), req.getParameter("user_id"));
 			req.setAttribute("dto", dto);
 			rd = req.getRequestDispatcher("student/update.jsp");
+			
+		}else if(req.getServletPath().equals("/modify.st")) { //정보 수정...?
+			
+			StudentDTO dto = new StudentDTO(null, req.getParameter("user_id"), null, req.getParameter("first_name"), req.getParameter("last_name"), Integer.parseInt(req.getParameter("student_no")));
+			int result = dao.modifyinfo(dto);
+			
+			//어떤 데이터를 넘길 필요가 없음 (페이지 새로고침만 하면 된다)
+			resp.sendRedirect("list.st");
+			return;	//rd = req.getRequestDispatcher("student/list.jsp");
+					//페이지를 바로 요청해버리면 list가 없기 때문에 에러 발생
+			
+		}else if(req.getServletPath().equals("/delete.st")) { //정보삭제
+			//DAO를 통해서 삭제처리
+			StudentDTO dto = new StudentDTO(null, req.getParameter("user_id"), null, req.getParameter("first_name"), req.getParameter("last_name"), Integer.parseInt(req.getParameter("student_no")));
+			StudentDTO delete = dao.deleteInfo(dto);
+			resp.sendRedirect("list.st");
+			return;
+			
 		}
 		
 		//if
@@ -77,5 +95,6 @@ public class StudentController extends HttpServlet {
 		dao.dbClose(); //DB 꼭 닫기~!!
 		rd.forward(req, resp);
 		//컨트롤러에서 jsp로 넘길 때에는 attribute, jsp에서 컨트롤러는 forward
+		
 	}//Servlet
 }//class

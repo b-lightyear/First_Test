@@ -88,9 +88,23 @@ h1 {
 	</tr>
 	<tr>
 		<td><a href="update.st?student_no=<%= dto.getStudent_no() %>&user_id=<%=dto.getUser_id() %>">수정하기</a></td>
-		<td><a href="#">삭제하기</a></td>
+		<td><a onclick="deleteInfo('<%= dto.getStudent_no() %>', '<%=dto.getUser_id() %>');">삭제하기</a></td>
+	
 	</tr>
 	</table>
+	<script type="text/javascript">
+	function deleteInfo(student_no, user_id) {
+		
+		if(confirm('정말 삭제하시겠습니까?')) {
+			//삭제를 하기 위한 키 값, url에 찍히게 해보기
+			location.href = 'delete.st?student_no=' + student_no + '&user_id=' + user_id;
+			
+		}else {
+			alert('삭제 취소')
+		}//if
+		
+	}//deleteInfo()
+	</script>
 	<%@ include file="/include/footer.jsp" %>
 </body>
 </html>
