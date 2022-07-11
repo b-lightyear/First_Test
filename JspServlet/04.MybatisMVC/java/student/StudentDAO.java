@@ -162,5 +162,7 @@ public class StudentDAO {
 		}//try
 		
 		return dto;
-	}
+	}//deleteInfo()
+	
+	
 }//class

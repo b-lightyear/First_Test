@@ -1,76 +1,70 @@
 package student;
 
 public class StudentDTO {
-	private String STUDENT_NAME, USER_ID, USER_PW, FIRST_NAME, LAST_NAME;
-	private int STUDENT_NO;
+	private String student_name, user_id, user_pw, first_name, last_name;
+	private int student_no;
 	
 	public StudentDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public StudentDTO(String sTUDENT_NAME, String uSER_ID, String uSER_PW, String fIRST_NAME, String lAST_NAME,
-			int sTUDENT_NO) {
+	public StudentDTO(String student_name, String user_id, String user_pw, String first_name, String last_name,
+			int student_no) {
 		super();
-		STUDENT_NAME = sTUDENT_NAME;
-		USER_ID = uSER_ID;
-		USER_PW = uSER_PW;
-		FIRST_NAME = fIRST_NAME;
-		LAST_NAME = lAST_NAME;
-
-		STUDENT_NO = sTUDENT_NO;
+		this.student_name = student_name;
+		this.user_id = user_id;
+		this.user_pw = user_pw;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.student_no = student_no;
 	}
 
-	public String getSTUDENT_NAME() {
-		return STUDENT_NAME;
+	public String getStudent_name() {
+		return student_name;
 	}
 
-	public void setSTUDENT_NAME(String sTUDENT_NAME) {
-		STUDENT_NAME = sTUDENT_NAME;
+	public void setStudent_name(String student_name) {
+		this.student_name = student_name;
 	}
 
-	public String getUSER_ID() {
-		return USER_ID;
+	public String getUser_id() {
+		return user_id;
 	}
 
-	public void setUSER_ID(String uSER_ID) {
-		USER_ID = uSER_ID;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
-	public String getUSER_PW() {
-		return USER_PW;
+	public String getUser_pw() {
+		return user_pw;
 	}
 
-	public void setUSER_PW(String uSER_PW) {
-		USER_PW = uSER_PW;
+	public void setUser_pw(String user_pw) {
+		this.user_pw = user_pw;
 	}
 
-	public String getFIRST_NAME() {
-		return FIRST_NAME;
+	public String getFirst_name() {
+		return first_name;
 	}
 
-	public void setFIRST_NAME(String fIRST_NAME) {
-		FIRST_NAME = fIRST_NAME;
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
 	}
 
-	public String getLAST_NAME() {
-		return LAST_NAME;
+	public String getLast_name() {
+		return last_name;
 	}
 
-	public void setLAST_NAME(String lAST_NAME) {
-		LAST_NAME = lAST_NAME;
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
 	}
 
-
-	public int getSTUDENT_NO() {
-		return STUDENT_NO;
+	public int getStudent_no() {
+		return student_no;
 	}
 
-	public void setSTUDENT_NO(int sTUDENT_NO) {
-		STUDENT_NO = sTUDENT_NO;
+	public void setStudent_no(int student_no) {
+		this.student_no = student_no;
 	}
 
-	
-	
-	
-	
 }//class

@@ -88,9 +88,7 @@ public class StudentController extends HttpServlet {
 			resp.sendRedirect("list.st");
 			return;
 			
-		}
-		
-		//if
+		}//if
 		
 		dao.dbClose(); //DB 꼭 닫기~!!
 		rd.forward(req, resp);

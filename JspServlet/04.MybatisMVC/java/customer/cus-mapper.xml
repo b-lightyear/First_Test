@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cus"><!-- 외부에서 접근할때 어떤 이름으로 접근을 할 건지 지정해놓은 부분 -->
+  
+  <!-- select 조회 쿼리 작성시 jdbc와 같이 ; 생략 -->
+  <select id="listSelect" resultType="customer.CustomerDTO">
+    select * from customer
+  </select>
+  
+  <insert id="insert">
+  	insert into customer (name, email, phone, gender)
+  	values (#{name}, #{email}, #{phone}, #{gender})
+  </insert>
+  
+  <insert id="update">
+  	update customer
+  	set name = #{name}, email = #{email}, phone = #{phone}, gender = #{gender}
+  	where id = #{id}
+  </insert>
+  
+</mapper>
