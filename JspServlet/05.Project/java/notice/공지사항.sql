@@ -5,8 +5,32 @@ title     varchar2(300) not null/*제목*/,
 content   varchar2(4000) not null/*내용*/,
 writer    varchar2(50)   /*작성자의 id*/,
 writedate date default sysdate /*작성일자*/,
-readcnt   number default 0 /*조회수*/
+readcnt   number default 0 /*조회수*/,
+filename  varchar2(300) /*첨부파일명*/,
+filepath  varchar2(300) /*첨부파일 업로드경로*/,
+root      number /* id */,
+step      number default 0 /* 동일한 root에 대한 순서*/,
+indent    number default 0 /* 들여쓰기 정도*/
 );
+
+alter table notice add (
+root      number /* id */,
+step      number default 0 /* 동일한 root에 대한 순서*/,
+indent    number default 0 /* 들여쓰기 정도*/
+)
+
+select id, root, indent
+from notice;
+
+update notice
+set root = id;
+
+alter table notice add(
+filename  varchar2(300) /*첨부파일명*/,
+filepath  varchar2(300) /*첨부파일 업로드경로*/
+);
+
+commit;
 
 desc notice;
 
@@ -28,6 +52,9 @@ create or replace trigger trg_notice
   for each row
 begin
   select seq_notice.nextval into :new.id from dual;
+  if( :new.root is null) then
+    select seq_notice.currval into :new.root from dual;
+  end if;
 end;
 /
 
@@ -49,3 +76,17 @@ select title, m.name, writedate
 from notice n LEFT OUTER JOIN member m
 ON n.writer = m.userid;
 
+-- 데이터행을 조회해서 가져온 순서에 해당하는 칼럼 : rownum
+select rownum no, n.*
+from (select rownum, name, n.*
+    from notice n inner join member m
+    ON n.writer = m.userid) n
+order by rownum desc;
+
+commit;
+
+--
+select row_number() over(order by id ) no, name, n.*
+from notice n inner join member m
+on n.writer = m.userid
+order by no desc ;

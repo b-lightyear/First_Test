@@ -9,13 +9,13 @@
 <body>
 	<%@ include file="/include/layout.jsp"%>
 	<div class="container-fluid px-4">
-		<h3 class="mt-4">공지글쓰기</h3>
+		<h3 class="mt-4">공지글 답변쓰기</h3>
 		
 		<!-- 파일 첨부할 때 주의사항
 			① form 태그의 전송방식은 post
 			② 파일 첨부형식을 지정 : enctype="multipart/form-data"  -->
 		
-		<form method='post' enctype="multipart/form-data" action='insert.no'>
+		<form method='post' enctype="multipart/form-data" action='reply_insert.no'>
 			<input type='hidden' name='writer' value='${userInfo.userid}'>
 			<table class='table'>
 				<tr>
@@ -33,6 +33,10 @@
 					</td>
 				</tr>
 			</table>
+			<input type='hidden' name='root' value='${dto.root}'>
+			<input type='hidden' name='step' value='${dto.step}'>
+			<input type='hidden' name='indent' value='${dto.indent}'>
+			
 		</form>
 		<div class='btnSet'>
 			<a class='btn-fill' onclick='if( emptyCheck() ) $("form").submit()'>작성</a>
